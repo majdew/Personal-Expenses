@@ -27,28 +27,46 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("Flutter App")),
       body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            width: double.infinity,
-            child: Card(
-              elevation: 8,
-              color: Colors.lightBlue,
-              child: Text("Charts"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: double.infinity,
+              child: Card(
+                elevation: 8,
+                color: Colors.lightBlue,
+                child: Text("Charts"),
+              ),
             ),
-          ),
-          Container(
-            width: double.infinity,
-            child: Card(
-              elevation: 8,
-              color: Colors.amber,
-              child: Text("Transactions list"),
+            Column(
+              children: transactions.map((transaction) {
+                return Card(
+                  child: Row(
+                    children: [
+                      Container(
+                        child: Text(
+                          transaction.amount.toString(),
+                        ),
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            transaction.title,
+                          ),
+                          Text(
+                            transaction.date.toString(),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                );
+              }).toList(),
             ),
-          ),
-        ],
-      )),
+          ],
+        ),
+      ),
     );
   }
 }
