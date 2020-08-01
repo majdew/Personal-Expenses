@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import '../models/transaction.dart';
 
 class TransactionList extends StatelessWidget {
@@ -33,9 +34,32 @@ class TransactionList extends StatelessWidget {
           : ListView.builder(
               itemCount: _userTransactions.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  leading: CircleAvatar(
-                    child: Text('\$${_userTransactions[index].amount}'),
+                return Card(
+                  margin: EdgeInsets.symmetric(
+                    vertical: 8,
+                    horizontal: 5,
+                  ),
+                  elevation: 8,
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      radius: 30,
+                      child: Padding(
+                        padding: const EdgeInsets.all(6),
+                        child: FittedBox(
+                          fit: BoxFit.cover,
+                          child: Text(
+                            '\$${_userTransactions[index].amount}',
+                          ),
+                        ),
+                      ),
+                    ),
+                    title: Text(
+                      _userTransactions[index].title,
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
+                    subtitle: Text(
+                      DateFormat.yMMMd().format(_userTransactions[index].date),
+                    ),
                   ),
                 );
               },
