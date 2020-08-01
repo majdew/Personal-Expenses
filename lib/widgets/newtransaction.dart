@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -61,6 +64,11 @@ class _NewTransactionState extends State<NewTransaction> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
+              if (Platform.isIOS)
+                CupertinoTextField(
+                  placeholder: "title",
+                  controller: _titleController,
+                ),
               TextField(
                 decoration: InputDecoration(
                   labelText: "Title",
@@ -100,12 +108,18 @@ class _NewTransactionState extends State<NewTransaction> {
                   ],
                 ),
               ),
-              RaisedButton(
-                onPressed: submitData,
-                child: Text("Add Transaction"),
-                color: Theme.of(context).primaryColor,
-                textColor: Colors.white,
-              ),
+              Platform.isIOS
+                  ? CupertinoButton(
+                      onPressed: submitData,
+                      child: Text("Add Transaction"),
+                      color: Theme.of(context).primaryColor,
+                    )
+                  : RaisedButton(
+                      onPressed: submitData,
+                      child: Text("Add Transaction"),
+                      color: Theme.of(context).primaryColor,
+                      textColor: Colors.white,
+                    ),
             ],
           ),
         ),
