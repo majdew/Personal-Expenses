@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 class NewTransaction extends StatefulWidget {
   final Function addNewTransaction;
 
-  NewTransaction(this.addNewTransaction);
+ const  NewTransaction(this.addNewTransaction);
 
   @override
   _NewTransactionState createState() => _NewTransactionState();
@@ -111,12 +111,12 @@ class _NewTransactionState extends State<NewTransaction> {
               Platform.isIOS
                   ? CupertinoButton(
                       onPressed: submitData,
-                      child: Text("Add Transaction"),
+                      child: const Text("Add Transaction"),
                       color: Theme.of(context).primaryColor,
                     )
                   : RaisedButton(
                       onPressed: submitData,
-                      child: Text("Add Transaction"),
+                      child: const Text("Add Transaction"),
                       color: Theme.of(context).primaryColor,
                       textColor: Colors.white,
                     ),

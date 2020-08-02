@@ -5,7 +5,7 @@ class ChartBar extends StatelessWidget {
   final double spendingAmount;
   final double spendingPercentageOfTotal;
 
-  ChartBar(this.label, this.spendingAmount, this.spendingPercentageOfTotal);
+  const ChartBar(this.label, this.spendingAmount, this.spendingPercentageOfTotal);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class ChartBar extends StatelessWidget {
                       color: Colors.grey,
                       width: 1.0,
                     ),
-                    color: Color.fromARGB(211, 211, 211, 220),
+                    color: const Color.fromARGB(211, 211, 211, 220),
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
